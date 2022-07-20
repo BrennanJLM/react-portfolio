@@ -4,16 +4,6 @@ import About from './components/About';
 import ContactForm from './components/Contact';
 import Gallery from './components/Gallery';
 
-
-mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb+srv://bmerrett:Bizzle4diaz!@cluster0.ei67k.mongodb.net/?retryWrites=true&w=majority',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-);
-
-
 function App() {
   const [categories] = useState([
     {
@@ -49,7 +39,6 @@ function App() {
       </main>
     </div>
   );
-
   
 }
 
