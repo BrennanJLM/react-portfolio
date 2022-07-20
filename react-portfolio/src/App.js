@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
 import Nav from './components/Nav';
 import About from './components/About';
-
 import ContactForm from './components/Contact';
+import Gallery from './components/Gallery';
+
+
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb+srv://bmerrett:Bizzle4diaz!@cluster0.ei67k.mongodb.net/?retryWrites=true&w=majority',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+);
+
 
 function App() {
   const [categories] = useState([
@@ -14,7 +24,7 @@ function App() {
 
   ]);
 
-  const [currentCategory, setCurrentCategory] = useState(categories[0]);
+  const [currentCategory, setCurrentCategory] = useState(categories[1]);
 
   const [contactSelected, setContactSelected] = useState(false);
 
@@ -30,15 +40,17 @@ function App() {
       <main>
         {!contactSelected ? (
           <>
-            
+            <Gallery currentCategory={currentCategory}></Gallery>
             <About></About>
           </>
         ) : (
           <ContactForm></ContactForm>
-        )}
+        )}        
       </main>
     </div>
   );
+
+  
 }
 
 export default App;
